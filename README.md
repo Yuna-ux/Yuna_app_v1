@@ -40,7 +40,7 @@ The integrated JavaScript allows:
 ## How to Use
 
 1. **Download the APK**: Click the "Download Yuna v1.apk" button to download the application.
-2. **Execute Actions**: Use the "Another Action" button to hear a sound and see the corresponding message in the selected language.
+2. **Execute Actions**: Use the "Play Sound" button to hear a sound and see the corresponding message in the selected language.
 3. **Toggle Language**: Click the "Toggle Language" button to switch between English and Portuguese.
 
 ## License
