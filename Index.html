@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Protegido por Senha</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    input { padding: 10px; font-size: 16px; }
+    button { padding: 10px 20px; font-size: 16px; }
+    pre { background-color: #f4f4f4; padding: 10px; border-radius: 5px; display: none; }
+  </style>
+</head>
+<body>
+  <h1>Protegido por Senha</h1>
+  <p>Digite a senha para executar o código Lua:</p>
+  <input type="password" id="password" placeholder="Digite a senha" />
+  <button onclick="checkPassword()">Executar Código Lua</button>
+  <h2>Resultado:</h2>
+  <pre id="lua-code"></pre>
+
+  <script>
+    function checkPassword() {
+      const passwordInput = document.getElementById("password").value;
+      fetch(`/api/lua?password=${encodeURIComponent(passwordInput)}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.code) {
+            document.getElementById("lua-code").textContent = data.code;
+            document.getElementById("lua-code").style.display = 'block';
+          } else {
+            alert(data.error);
+          }
+        })
+        .catch(error => {
+          console.error("Erro na requisição:", error);
+          alert("Erro ao processar a requisição.");
+        });
+    }
+  </script>
+</body>
+</html>
