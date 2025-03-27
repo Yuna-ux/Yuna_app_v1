@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codificação e Criptografia</title>
+    <style>
+        body {
+            background-color: #111;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: darkblue;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 5s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Codificação e Criptografia</h1>
+        <button class="btn" onclick="encodeBase64()">Base64 Encode</button>
+        <button class="btn" onclick="decodeBase64()">Base64 Decode</button>
+        <button class="btn" onclick="encryptAES()">AES Encrypt</button>
+    </div>
+
+    <script>
+        function encodeBase64() {
+            let input = prompt("Digite o texto para codificar:");
+            if (input !== null) {
+                let encoded = btoa(input);
+                alert(encoded);
+            }
+        }
+
+        function decodeBase64() {
+            let input = prompt("Digite o texto para decodificar:");
+            if (input !== null) {
+                try {
+                    let decoded = atob(input);
+                    alert("Base64 Decoded: " + decoded);
+                } catch (error) {
+                    alert("Erro ao decodificar Base64!");
+                }
+            }
+        }
+
+        function encryptAES() {
+            let input = prompt("Digite o texto para criptografar:");
+            let key = prompt("Digite a chave AES:");
+            if (input && key) {
+                alert("⚠️ AES Encryption não está implementado! Use uma biblioteca JS como CryptoJS.");
+            }
+        }
+
+        function createBubble() {
+            let bubble = document.createElement("div");
+            bubble.classList.add("bubble");
+            let size = Math.random() * 20 + 10;
+            bubble.style.width = size + "px";
+            bubble.style.height = size + "px";
+            bubble.style.left = Math.random() * 100 + "vw";
+            document.body.appendChild(bubble);
+            setTimeout(() => bubble.remove(), 5000);
+        }
+
+        setInterval(createBubble, 500);
+    </script>
+</body>
+</html>
